@@ -5,11 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseListener;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
@@ -30,6 +26,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.TransferHandler;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import listeners.MyActionListener;
 
 public class ComponentCreator {
@@ -273,6 +270,34 @@ public class ComponentCreator {
 
 
         jframe_da_menubar.setJMenuBar(nome_menubar);
+
+    }
+
+    public static File filechooser_setup(String title, boolean any_archive_type, boolean only_images, String archive_type){
+
+        JFileChooser j = new JFileChooser();
+        j.setDialogTitle(title);
+        if(any_archive_type==false){
+            j.setAcceptAllFileFilterUsed(false);
+
+            
+            FileNameExtensionFilter t;
+
+            if(only_images){
+                t = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif", "bmp");
+            }
+            else{
+                //FileNameExtensionFilter t = new FileNameExtensionFilter("Only .txt files","txt"); //"JPEG file", "jpg", "jpeg"
+                t = new FileNameExtensionFilter("Only ."+archive_type+" files",archive_type);
+            }
+            
+            j.addChoosableFileFilter(t);
+
+        }
+
+        j.showOpenDialog(null);
+        
+        return j.getSelectedFile();
 
     }
 
