@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseListener;
 import java.io.File;
-import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
@@ -16,9 +15,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -238,42 +234,7 @@ public class ComponentCreator {
         if(fore!=null){checkbox.setForeground(fore);}
     }
 
-    public static void menubar_setup(JMenuBar nome_menubar, String[] principais, List<String[]> secundarios, List<String[]> terciario, MyActionListener actionclass, JFrame jframe_da_menubar){
-        
-        int contador = 0;
-        int subitemEmenu = -1; //localização da linha no terceario com os subsubitens
-        for(String item : principais){
-            JMenu menu = new JMenu(item);
-            for(String subitem : secundarios.get(contador)){    
-                
-                subitemEmenu = -1;
-                // key1,value,value,value
-                // key2,value,value,value
-                for(int k=0;k<terciario.size();k++){if(terciario.get(k)[0].equals(subitem)){subitemEmenu=k;}}
-
-                if(subitemEmenu!=-1){ //se item é menu e possui subitens
-                    JMenu i = new JMenu(subitem); //item é um menu
-                    for(int j=1;j<terciario.get(subitemEmenu).length;j++){ //percorre todos os subitens do menu que foi descoberto
-                        JMenuItem subsubitem = new JMenuItem(terciario.get(subitemEmenu)[j]); //item do menu descoberto
-                        i.add(subsubitem); //adiciona item no menu (ou em outras palavras, subitem no submenu)
-                        subsubitem.addActionListener(actionclass); //actionlistener no subitem
-                    }
-                    menu.add(i); //menu principal recebe o menu (agora arrumado) descoberto
-                }
-                else{JMenuItem i = new JMenuItem(subitem);menu.add(i);i.addActionListener(actionclass);}
-                subitemEmenu=-1;
-
-            }
-            nome_menubar.add(menu);
-            contador++;
-        }
-
-
-        jframe_da_menubar.setJMenuBar(nome_menubar);
-
-    }
-
-    public static File filechooser_setup(String title, boolean any_archive_type, boolean only_images, String archive_type){
+    public static File filechooserSetup(String title, boolean any_archive_type, boolean only_images, String archive_type){
 
         JFileChooser j = new JFileChooser();
         j.setDialogTitle(title);
