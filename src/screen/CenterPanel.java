@@ -11,6 +11,7 @@ public class CenterPanel {
     private static JLabel title = new JLabel();
 
     private static Font buttonFont = new Font("Arial",Font.PLAIN,15);
+    private static Font titleFont = new Font("Arial",Font.PLAIN,31);
     private static Font labelFont = new Font("Arial",Font.PLAIN,17);
     private static Color backColor = new Color(23,23,45);
     private static Color foreColor = Color.WHITE;
@@ -40,7 +41,7 @@ public class CenterPanel {
         panel.setBackground(backColorDisabled);
 
         ComponentCreator.labelSetup(title, "", false, 0, 0, 4*WIDTH/5, HEIGHT/8, panel);
-        ComponentCreator.labelEdit(title, labelFont, backColor, foreColor);
+        ComponentCreator.labelEdit(title, titleFont, backColorDisabled, foreColor);
         title.setHorizontalAlignment(JLabel.CENTER);
         
     }

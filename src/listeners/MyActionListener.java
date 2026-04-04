@@ -3,6 +3,7 @@ package listeners;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import screen.CenterPanel;
 import screen.ComponentCreator;
 import screen.SidePanel;
@@ -55,28 +56,31 @@ public class MyActionListener implements ActionListener {
             String op1 = (SidePanel.getEncryptButton().getBackground()==SidePanel.getBackColorSelected())?"Encrypt":"Decrypt";
             String op2 = (SidePanel.getTextInputButton().getBackground()==SidePanel.getBackColorSelected())?"Text Input":"File Input";
          
-            if(e.getSource()==SidePanel.getAesButton()){ //SIDEPANEL: AES BUTTON
+            JButton button = (JButton) e.getSource();
+            SidePanel.selectAlgorithmButton(button);
+
+            if(button==SidePanel.getAesButton()){ //SIDEPANEL: AES BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - AES");
             }
-            else if(e.getSource()==SidePanel.getChacha20Button()){ //SIDEPANEL: CHACHA20 BUTTON
+            else if(button==SidePanel.getChacha20Button()){ //SIDEPANEL: CHACHA20 BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - CHACHA20");
             }
-            else if(e.getSource()==SidePanel.getDesButton()){ //SIDEPANEL: DES BUTTON
+            else if(button==SidePanel.getDesButton()){ //SIDEPANEL: DES BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - DES");
             }
-            else if(e.getSource()==SidePanel.getRsaButton()){ //SIDEPANEL: RSA BUTTON
+            else if(button==SidePanel.getRsaButton()){ //SIDEPANEL: RSA BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - RSA");
             }
-            else if(e.getSource()==SidePanel.getEccButton()){ //SIDEPANEL: ECC BUTTON
+            else if(button==SidePanel.getEccButton()){ //SIDEPANEL: ECC BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - ECC");
             }
-            else if(e.getSource()==SidePanel.getSha256Button()){ //SIDEPANEL: SHA-256 BUTTON
+            else if(button==SidePanel.getSha256Button()){ //SIDEPANEL: SHA-256 BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - SHA-256");
             }
-            else if(e.getSource()==SidePanel.getMd5Button()){ //SIDEPANEL: MD5 BUTTON
+            else if(button==SidePanel.getMd5Button()){ //SIDEPANEL: MD5 BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - MD5");
             }
-            else if(e.getSource()==SidePanel.getKyberButton()){ //SIDEPANEL: KYBER BUTTON
+            else if(button==SidePanel.getKyberButton()){ //SIDEPANEL: KYBER BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - KYBER");
             }
 

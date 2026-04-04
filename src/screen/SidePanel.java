@@ -182,4 +182,30 @@ public class SidePanel {
         textInput.setBackground(backColor);
     }
 
+    public static void selectAlgorithmButton(JButton button) {
+        
+        // deselect all
+        aesButton.setBackground(backColor);
+        aesButton.setForeground(foreColor);
+        chacha20Button.setBackground(backColor);
+        chacha20Button.setForeground(foreColor);
+        desButton.setBackground(backColor);
+        desButton.setForeground(foreColor);
+        rsaButton.setBackground(backColor);
+        rsaButton.setForeground(foreColor);
+        eccButton.setBackground(backColor);
+        eccButton.setForeground(foreColor);
+        sha256Button.setBackground(backColor);
+        sha256Button.setForeground(foreColor);
+        md5Button.setBackground(backColor);
+        md5Button.setForeground(foreColor);
+        kyberButton.setBackground(backColor);
+        kyberButton.setForeground(foreColor);
+
+        // select
+        button.setBackground(backColorSelected);
+        button.setForeground(foreColorSelected);
+
+    }
+
 }
