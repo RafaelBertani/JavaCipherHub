@@ -143,12 +143,16 @@ public class SidePanel {
         decrypt.setForeground(foreColor);
         decrypt.setBackground(backColor);
 
+        deselectAlgorithmButtons();
+
         sha256Button.setBackground(backColor);
         sha256Button.setForeground(foreColor);
         sha256Button.setEnabled(true);
         md5Button.setBackground(backColor);
         md5Button.setForeground(foreColor);
         md5Button.setEnabled(true);
+
+        CenterPanel.getTitle().setText("");
     
     }
 
@@ -158,6 +162,8 @@ public class SidePanel {
         decrypt.setBackground(backColorSelected);
         encrypt.setForeground(foreColor);
         encrypt.setBackground(backColor);
+
+        deselectAlgorithmButtons();
     
         sha256Button.setBackground(backColorDisabled);
         sha256Button.setForeground(foreColorDisabled);
@@ -165,6 +171,8 @@ public class SidePanel {
         md5Button.setBackground(backColorDisabled);
         md5Button.setForeground(foreColorDisabled);
         md5Button.setEnabled(false);
+
+        CenterPanel.getTitle().setText("");
     
     }
 
@@ -173,6 +181,10 @@ public class SidePanel {
         textInput.setBackground(backColorSelected);
         fileInput.setForeground(foreColor);
         fileInput.setBackground(backColor);
+
+        deselectAlgorithmButtons();
+
+        CenterPanel.getTitle().setText("");
     }
 
     public static void toggleFile() {
@@ -180,9 +192,13 @@ public class SidePanel {
         fileInput.setBackground(backColorSelected);
         textInput.setForeground(foreColor);
         textInput.setBackground(backColor);
+
+        deselectAlgorithmButtons();
+
+        CenterPanel.getTitle().setText("");
     }
 
-    public static void selectAlgorithmButton(JButton button) {
+    public static void deselectAlgorithmButtons() {
         
         // deselect all
         aesButton.setBackground(backColor);
@@ -202,10 +218,12 @@ public class SidePanel {
         kyberButton.setBackground(backColor);
         kyberButton.setForeground(foreColor);
 
+    }
+
+    public static void selectAlgorithmButton(JButton button) {
         // select
         button.setBackground(backColorSelected);
         button.setForeground(foreColorSelected);
-
     }
 
 }

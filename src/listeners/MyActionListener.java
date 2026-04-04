@@ -57,6 +57,7 @@ public class MyActionListener implements ActionListener {
             String op2 = (SidePanel.getTextInputButton().getBackground()==SidePanel.getBackColorSelected())?"Text Input":"File Input";
          
             JButton button = (JButton) e.getSource();
+            SidePanel.deselectAlgorithmButtons();
             SidePanel.selectAlgorithmButton(button);
 
             if(button==SidePanel.getAesButton()){ //SIDEPANEL: AES BUTTON
