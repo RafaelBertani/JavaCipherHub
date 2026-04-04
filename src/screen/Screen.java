@@ -32,6 +32,7 @@ public class Screen extends JFrame{
         ComponentCreator.panelSetup(mainPanel, mainFrame, 0, 0, WIDTH, HEIGHT);
         ComponentCreator.panelEdit(mainPanel, false, new Color(44,44,66));
         
+        
         ComponentCreator.frameSetup(mainFrame, true, JFrame.EXIT_ON_CLOSE, WIDTH, HEIGHT);
         ComponentCreator.frameEdit(mainFrame, "JavaCipherHub", null);
         

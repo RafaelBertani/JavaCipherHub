@@ -2,17 +2,25 @@ package screen;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class CenterPanel {
     
     private static final JPanel panel = new JPanel();
     private static JLabel title = new JLabel();
+    private static JLabel textLabel = new JLabel();
+    private static JTextArea textArea = new JTextArea();
+    private static JLabel fileLabel = new JLabel();
+    private static JTextField fileText = new JTextField();
+    private static JButton fileButton = new JButton();
 
     private static Font buttonFont = new Font("Arial",Font.PLAIN,15);
     private static Font titleFont = new Font("Arial",Font.PLAIN,31);
-    private static Font labelFont = new Font("Arial",Font.PLAIN,17);
+    private static Font labelFont = new Font("Arial",Font.PLAIN,19);
     private static Color backColor = new Color(23,23,45);
     private static Color foreColor = Color.WHITE;
     private static Color backColorDisabled = new Color(12,12,23);
@@ -43,6 +51,9 @@ public class CenterPanel {
         ComponentCreator.labelSetup(title, "", false, 0, 0, 4*WIDTH/5, HEIGHT/8, panel);
         ComponentCreator.labelEdit(title, titleFont, backColorDisabled, foreColor);
         title.setHorizontalAlignment(JLabel.CENTER);
+
+        ComponentCreator.labelSetup(textLabel, "Type your input", false, 10, 4*HEIGHT/25, 4*WIDTH/5-35, HEIGHT/20, panel);
+        ComponentCreator.labelEdit(textLabel, labelFont, backColor, foreColor);
         
     }
 
