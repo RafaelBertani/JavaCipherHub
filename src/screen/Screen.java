@@ -21,14 +21,16 @@ public class Screen extends JFrame{
 
         //inicia todos os panels
         SidePanel sidePanel = new SidePanel();
+        CenterPanel centerPanel = new CenterPanel();
         
         // outros paineis não são adicionados diretamente no frame principal porque
         // ao serem chaveados requisitariam frame.setVisible(false), o que faria a tela
         // sumir e reaparecer, então, é melhor apenas panel.setVisible(false)
         mainPanel.add(SidePanel.getPanel());
+        mainPanel.add(CenterPanel.getPanel());
 
         ComponentCreator.panelSetup(mainPanel, mainFrame, 0, 0, WIDTH, HEIGHT);
-        ComponentCreator.panelEdit(mainPanel,true,Color.WHITE);
+        ComponentCreator.panelEdit(mainPanel, false, new Color(44,44,66));
         
         ComponentCreator.frameSetup(mainFrame, true, JFrame.EXIT_ON_CLOSE, WIDTH, HEIGHT);
         ComponentCreator.frameEdit(mainFrame, "JavaCipherHub", null);
