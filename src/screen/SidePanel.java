@@ -153,6 +153,7 @@ public class SidePanel {
         md5Button.setEnabled(true);
 
         CenterPanel.getTitle().setText("");
+        CenterPanel.hideAll();
     
     }
 
@@ -173,6 +174,7 @@ public class SidePanel {
         md5Button.setEnabled(false);
 
         CenterPanel.getTitle().setText("");
+        CenterPanel.hideAll();
     
     }
 
@@ -185,6 +187,7 @@ public class SidePanel {
         deselectAlgorithmButtons();
 
         CenterPanel.getTitle().setText("");
+        CenterPanel.hideAll();
     }
 
     public static void toggleFile() {
@@ -196,6 +199,7 @@ public class SidePanel {
         deselectAlgorithmButtons();
 
         CenterPanel.getTitle().setText("");
+        CenterPanel.hideAll();
     }
 
     public static void deselectAlgorithmButtons() {

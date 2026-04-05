@@ -60,6 +60,10 @@ public class MyActionListener implements ActionListener {
             SidePanel.deselectAlgorithmButtons();
             SidePanel.selectAlgorithmButton(button);
 
+            if(op2.equals("Text Input")){CenterPanel.toggleText();
+            }else{CenterPanel.toggleFile();}
+
+            
             if(button==SidePanel.getAesButton()){ //SIDEPANEL: AES BUTTON
                 CenterPanel.getTitle().setText(op1+" - "+op2+" - AES");
             }

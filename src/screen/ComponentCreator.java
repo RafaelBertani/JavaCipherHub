@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.TransferHandler;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -100,6 +102,65 @@ public class ComponentCreator {
         if(f!=null){textfield.setFont(f);}
         if(back!=null){textfield.setBackground(back);}
         if(fore!=null){textfield.setForeground(fore);}
+    }
+
+    public static void textareaSetup(JTextArea textarea_name, String texto_textarea, int x, int y, int width, int height, boolean editable, boolean border, JPanel painel_do_textarea){
+
+        textarea_name.setText(texto_textarea);
+        textarea_name.setBounds(x, y, width, height);
+        textarea_name.setEditable(editable);
+        if(border==false){textarea_name.setBorder(null);}
+    
+        painel_do_textarea.add(textarea_name);
+
+    }
+
+    public static void textareaEdit(JTextArea textarea_name, Font f, Color back, Color fore){
+        if(f!=null){textarea_name.setFont(f);}
+        if(back!=null){textarea_name.setBackground(back);}
+        if(fore!=null){textarea_name.setForeground(fore);}
+    }
+
+    public static void scrollpaneSetup(JTextArea textarea_name, JFrame scroll_frame, String scrollpane_text, int lines, int columns, int x, int y, int width, int height){
+        
+        textarea_name.setRows(lines);
+        textarea_name.setColumns(columns);
+        textarea_name.setText(scrollpane_text);
+        JPanel panel_do_scroll = new JPanel();
+        
+        //panel.setBorder(new TitledBorder(new EtchedBorder(),"Display area"));
+        panel_do_scroll.setBounds(x,y,width,height);
+        //panel.setBackground(new Color(255,255,0));
+
+        JScrollPane scrollPane = new JScrollPane(textarea_name);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        panel_do_scroll.add(scrollPane);
+
+        scroll_frame.add(panel_do_scroll);
+
+    }
+
+    public static void scrollpaneInSeparatedPanelSetup(JTextArea textarea_name, JPanel scroll_panel, JFrame scroll_frame, String scrollpane_text, int lines, int columns, int x, int y, int width, int height){
+        
+        textarea_name.setRows(lines);
+        textarea_name.setColumns(columns);
+        textarea_name.setText(scrollpane_text);
+        
+        //panel.setBorder(new TitledBorder(new EtchedBorder(),"Display area"));
+        scroll_panel.setBounds(x,y,width,height);
+        //panel.setBackground(new Color(255,255,0));
+
+        JScrollPane scrollPane = new JScrollPane(textarea_name);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll_panel.add(scrollPane);
+
+        scroll_frame.add(scroll_panel);
+    }
+
+    public static void scrollpaneEdit(JTextArea nome_textarea, Font f, Color back, Color fore){
+        if(f!=null){nome_textarea.setFont(f);}
+        if(back!=null){nome_textarea.setBackground(back);}
+        if(fore!=null){nome_textarea.setForeground(fore);}
     }
 
     public static void passwordfieldSetup(JPasswordField passwordfield, int x, int y, int height, int width, boolean border, JPanel passwordfieldPanel){
