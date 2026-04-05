@@ -35,6 +35,7 @@ public class Screen extends JFrame{
         
         ComponentCreator.frameSetup(mainFrame, true, JFrame.EXIT_ON_CLOSE, WIDTH, HEIGHT);
         ComponentCreator.frameEdit(mainFrame, "JavaCipherHub", null);
+        mainFrame.setResizable(false);
         
     }
     

@@ -2,6 +2,7 @@ package screen;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,12 +15,20 @@ public class CenterPanel {
     
     private static final JPanel panel = new JPanel();
     private static JLabel title = new JLabel();
+
     private static JLabel textLabel = new JLabel();
     private static JTextArea textArea = new JTextArea();
     private static JScrollPane scrollPane;
+    
     private static JLabel fileLabel = new JLabel();
     private static JTextField fileText = new JTextField();
     private static JButton fileButton = new JButton();
+
+    private static JLabel outputLabel = new JLabel();
+    private static JTextField outputFolder = new JTextField();
+    private static JLabel outputName = new JLabel();
+    private static JTextField outputType = new JTextField();
+    private static JButton outputButton = new JButton();
 
     private static Font buttonFont = new Font("Arial",Font.PLAIN,15);
     private static Font titleFont = new Font("Arial",Font.PLAIN,31);
@@ -31,9 +40,18 @@ public class CenterPanel {
     private static Color backColorSelected = new Color(46,46,90);
     private static Color foreColorSelected = Color.WHITE;
 
+    private static File inputFile;
+    private static File outputFile;
+
     //GETTERS
     public static JPanel getPanel() {return panel;}
     public static JLabel getTitle() {return title;}
+    public static JTextField getFileText() {return fileText;}
+    public static JTextField getOutputType() {return outputType;}
+    public static JButton getFileButton() {return fileButton;}
+    public static JButton getOutputButton() {return outputButton;}
+    public static File getInputFile() {return inputFile;}
+    public static File getOutputFile() {return outputFile;}
     public static Color getBackColor() { return backColor; }
     public static Color getForeColor() { return foreColor; }
     public static Color getBackColorDisabled() { return backColorDisabled; }
@@ -41,6 +59,10 @@ public class CenterPanel {
     public static Color getBackColorSelected() { return backColorSelected; }
     public static Color getForeColorSelected() { return foreColorSelected; }
 
+    //SETTERS
+    public static void setInputFile(File inputFile) {CenterPanel.inputFile=inputFile;}
+    public static void setOutputFile(File outputFile) {CenterPanel.outputFile=outputFile;}
+    
     public CenterPanel(){
 
         int WIDTH = Screen.getWIDTH();
@@ -55,6 +77,8 @@ public class CenterPanel {
         ComponentCreator.labelEdit(title, titleFont, backColorDisabled, foreColor);
         title.setHorizontalAlignment(JLabel.CENTER);
 
+        
+        // TEXT
 
         ComponentCreator.labelSetup(textLabel, "Type your input", false, 10, 4*HEIGHT/25, 4*WIDTH/5-35, HEIGHT/20, panel);
         ComponentCreator.labelEdit(textLabel, labelFont, backColorDisabled, foreColor);
@@ -79,6 +103,8 @@ public class CenterPanel {
         panel.add(scrollPane);
         
 
+        // FILE
+
         ComponentCreator.labelSetup(fileLabel, "Your input file", false, 10, 4*HEIGHT/25, 4*WIDTH/5-35, HEIGHT/20, panel);
         ComponentCreator.labelEdit(fileLabel, labelFont, backColorDisabled, foreColor);
         fileLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -87,8 +113,30 @@ public class CenterPanel {
         ComponentCreator.textfieldEdit(fileText, labelFont, backColorSelected, foreColorDisabled);
         fileText.setVisible(false);
         ComponentCreator.buttonSetup(fileButton, "Select file", 10, 4*HEIGHT/25+HEIGHT/15+HEIGHT/15, 4*WIDTH/5-35, HEIGHT/20, Screen.myActionListener, panel);
-        ComponentCreator.buttonEdit(fileButton, buttonFont, backColor, foreColor);
+        ComponentCreator.buttonEdit(fileButton, buttonFont, backColorSelected, foreColor);
         fileButton.setVisible(false);
+        fileButton.setFocusable(false);
+
+
+        // OUTPUT
+
+        ComponentCreator.labelSetup(outputLabel, "Your output folder", false, 10, 7*HEIGHT/10, 4*WIDTH/5-35, HEIGHT/20, panel);
+        ComponentCreator.labelEdit(outputLabel, labelFont, backColorDisabled, foreColor);
+        outputLabel.setHorizontalAlignment(JLabel.CENTER);
+        outputLabel.setVisible(false);
+        ComponentCreator.textfieldSetup(outputFolder, "", 10, 7*HEIGHT/10+HEIGHT/18, 4*WIDTH/5-35, HEIGHT/20, false, true, panel);
+        ComponentCreator.textfieldEdit(outputFolder, labelFont, backColorSelected, foreColorDisabled);
+        outputFolder.setVisible(false);
+        ComponentCreator.labelSetup(outputName, "Output file name:", false, 10, 7*HEIGHT/10+2*HEIGHT/18, WIDTH/5, HEIGHT/20, panel);
+        ComponentCreator.labelEdit(outputName, labelFont, backColorDisabled, foreColor);
+        outputName.setVisible(false);
+        ComponentCreator.textfieldSetup(outputType, "", 10+WIDTH/5, 7*HEIGHT/10+2*HEIGHT/18, 3*WIDTH/5-35, HEIGHT/20, true, true, panel);
+        ComponentCreator.textfieldEdit(outputType, labelFont, backColorSelected, foreColor);
+        outputType.setVisible(false);
+        ComponentCreator.buttonSetup(outputButton, "Select file", 10+3*WIDTH/10, 7*HEIGHT/10+3*HEIGHT/17, WIDTH/5-35, HEIGHT/20, Screen.myActionListener, panel);
+        ComponentCreator.buttonEdit(outputButton, buttonFont, backColorSelected, foreColor);
+        outputButton.setVisible(false);
+        outputButton.setFocusable(false);
 
     }
 
@@ -100,6 +148,12 @@ public class CenterPanel {
         textLabel.setVisible(true);
         textArea.setVisible(true);
         scrollPane.setVisible(true);
+
+        outputLabel.setVisible(true);
+        outputFolder.setVisible(true);
+        outputName.setVisible(true);
+        outputType.setVisible(true);
+        outputButton.setVisible(true);
     }
 
     public static void toggleFile(){
@@ -110,6 +164,12 @@ public class CenterPanel {
         fileLabel.setVisible(true);
         fileText.setVisible(true);
         fileButton.setVisible(true);
+
+        outputLabel.setVisible(true);
+        outputFolder.setVisible(true);
+        outputName.setVisible(true);
+        outputType.setVisible(true);
+        outputButton.setVisible(true);
     }
 
     public static void hideAll(){
@@ -120,6 +180,12 @@ public class CenterPanel {
         fileLabel.setVisible(false);
         fileText.setVisible(false);
         fileButton.setVisible(false);
+
+        outputLabel.setVisible(false);
+        outputFolder.setVisible(false);
+        outputName.setVisible(false);
+        outputType.setVisible(false);
+        outputButton.setVisible(false);
     }
 
 }

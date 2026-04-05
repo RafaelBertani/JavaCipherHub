@@ -39,19 +39,39 @@ public class MyActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource()==SidePanel.getEncryptButton()){ //SIDEPANEL: ENCRYPT BUTTON
+        JButton source = (JButton) e.getSource();
+
+        if(source==SidePanel.getEncryptButton()){ //SIDEPANEL: ENCRYPT BUTTON
             SidePanel.toggleEncript();
         }
-        else if(e.getSource()==SidePanel.getDecryptButton()){ //SIDEPANEL: DECRYPT BUTTON
+        else if(source==SidePanel.getDecryptButton()){ //SIDEPANEL: DECRYPT BUTTON
             SidePanel.toggleDecript();
         }
-        else if(e.getSource()==SidePanel.getTextInputButton()){ //SIDEPANEL: TEXT INPUT BUTTON
+        else if(source==SidePanel.getTextInputButton()){ //SIDEPANEL: TEXT INPUT BUTTON
             SidePanel.toggleText();
         }
-        else if(e.getSource()==SidePanel.getFileInputButton()){ //SIDEPANEL: FILE INPUT BUTTON
+        else if(source==SidePanel.getFileInputButton()){ //SIDEPANEL: FILE INPUT BUTTON
             SidePanel.toggleFile();
         }
-        else if( checkSelection() ){
+        else if(source==CenterPanel.getFileButton()){ //CENTERPANEL: SELECT FILE BUTTON
+            
+            try {
+                CenterPanel.setInputFile(ComponentCreator.filechooserSetup("Select your input file"));
+            } catch (Exception exc) {
+                ComponentCreator.errorMessage("Failed to load input file", "Error");
+            }
+
+        }
+        else if(source==CenterPanel.getOutputButton()){ //CENTERPANEL: SELECT OUTPUT BUTTON
+        
+            try {
+                CenterPanel.setOutputFile(ComponentCreator.folderchooserSetup("Select your output folder"));
+            } catch (Exception exc) {
+                ComponentCreator.errorMessage("Failed to read output folder", "Error");
+            }
+
+        }
+        else if( checkSelection() ){ // SIDEPANEL: ALGORITHMS BUTTONS
 
             String op1 = (SidePanel.getEncryptButton().getBackground()==SidePanel.getBackColorSelected())?"Encrypt":"Decrypt";
             String op2 = (SidePanel.getTextInputButton().getBackground()==SidePanel.getBackColorSelected())?"Text Input":"File Input";

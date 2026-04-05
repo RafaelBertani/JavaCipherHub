@@ -24,7 +24,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.TransferHandler;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import listeners.MyActionListener;
 
 public class ComponentCreator {
@@ -295,32 +294,27 @@ public class ComponentCreator {
         if(fore!=null){checkbox.setForeground(fore);}
     }
 
-    public static File filechooserSetup(String title, boolean any_archive_type, boolean only_images, String archive_type){
+    public static File filechooserSetup(String title){
 
         JFileChooser j = new JFileChooser();
         j.setDialogTitle(title);
-        if(any_archive_type==false){
-            j.setAcceptAllFileFilterUsed(false);
-
-            
-            FileNameExtensionFilter t;
-
-            if(only_images){
-                t = new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "gif", "bmp");
-            }
-            else{
-                //FileNameExtensionFilter t = new FileNameExtensionFilter("Only .txt files","txt"); //"JPEG file", "jpg", "jpeg"
-                t = new FileNameExtensionFilter("Only ."+archive_type+" files",archive_type);
-            }
-            
-            j.addChoosableFileFilter(t);
-
-        }
-
+        j.setAcceptAllFileFilterUsed(false);
         j.showOpenDialog(null);
         
         return j.getSelectedFile();
 
+    }
+
+    public static File folderchooserSetup(String title){
+        
+        JFileChooser j = new JFileChooser();
+        j.setDialogTitle(title);
+        j.setAcceptAllFileFilterUsed(false);
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        j.showOpenDialog(null);
+    
+        return j.getSelectedFile();
+    
     }
 
     public static void errorMessage(String message, String title){
