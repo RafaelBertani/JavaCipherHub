@@ -3,10 +3,8 @@ package screen;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.MouseListener;
 import java.io.File;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.TransferHandler;
 import listeners.MyActionListener;
 
 public class ComponentCreator {
@@ -120,49 +115,7 @@ public class ComponentCreator {
         if(fore!=null){textarea_name.setForeground(fore);}
     }
 
-    public static void scrollpaneSetup(JTextArea textarea_name, JFrame scroll_frame, String scrollpane_text, int lines, int columns, int x, int y, int width, int height){
-        
-        textarea_name.setRows(lines);
-        textarea_name.setColumns(columns);
-        textarea_name.setText(scrollpane_text);
-        JPanel panel_do_scroll = new JPanel();
-        
-        //panel.setBorder(new TitledBorder(new EtchedBorder(),"Display area"));
-        panel_do_scroll.setBounds(x,y,width,height);
-        //panel.setBackground(new Color(255,255,0));
-
-        JScrollPane scrollPane = new JScrollPane(textarea_name);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        panel_do_scroll.add(scrollPane);
-
-        scroll_frame.add(panel_do_scroll);
-
-    }
-
-    public static void scrollpaneInSeparatedPanelSetup(JTextArea textarea_name, JPanel scroll_panel, JFrame scroll_frame, String scrollpane_text, int lines, int columns, int x, int y, int width, int height){
-        
-        textarea_name.setRows(lines);
-        textarea_name.setColumns(columns);
-        textarea_name.setText(scrollpane_text);
-        
-        //panel.setBorder(new TitledBorder(new EtchedBorder(),"Display area"));
-        scroll_panel.setBounds(x,y,width,height);
-        //panel.setBackground(new Color(255,255,0));
-
-        JScrollPane scrollPane = new JScrollPane(textarea_name);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll_panel.add(scrollPane);
-
-        scroll_frame.add(scroll_panel);
-    }
-
-    public static void scrollpaneEdit(JTextArea nome_textarea, Font f, Color back, Color fore){
-        if(f!=null){nome_textarea.setFont(f);}
-        if(back!=null){nome_textarea.setBackground(back);}
-        if(fore!=null){nome_textarea.setForeground(fore);}
-    }
-
-    public static void passwordfieldSetup(JPasswordField passwordfield, int x, int y, int height, int width, boolean border, JPanel passwordfieldPanel){
+    public static void passwordfieldSetup(JPasswordField passwordfield, int x, int y, int width, int height, boolean border, JPanel passwordfieldPanel){
 
         passwordfield.setBounds(x, y, height, width);
         passwordfield.setEditable(true);
@@ -218,27 +171,6 @@ public class ComponentCreator {
         if(back!=null){combobox.setBackground(back);}
         if(fore!=null){combobox.setForeground(fore);}
     }
-   
-    public static void radiobuttonSetup(JRadioButton rb, String radiobuttonText, int x, int y, int width, int height, ButtonGroup bg, JPanel rbPanel){
-        
-        rb.setText(radiobuttonText);
-        rb.setBounds(x,y,width,height);    
-        
-        rb.setActionCommand(rb.getText());
-        
-        bg.add(rb);
-
-        rbPanel.add(rb);
-    
-    }
-
-    public static void radiobuttonEdit(JRadioButton rb, Font f, Color back, Color fore){
-
-        if(f!=null){rb.setFont(f);}
-        if(back!=null){rb.setBackground(back);}
-        if(fore!=null){rb.setForeground(fore);}
-
-    }
 
     public static void imageSetupNoResize(JLabel label, String completePath, int x, int y, int width, int height, JPanel labelPanel) {
 
@@ -256,18 +188,6 @@ public class ComponentCreator {
         label.setIcon(new ImageIcon(scaledImage));
 
         labelPanel.add(label);
-    }
-
-    public static void dragAndDropSetup(JLabel label, String completePath, String labelTitle, int x, int y, int width, int height, MouseListener ml, JPanel labelPanel){
-
-        label.setName(labelTitle);
-        label.setBounds(x,y,width,height);
-        label.setIcon(new ImageIcon(completePath));
-        
-        label.addMouseListener(ml);
-        label.setTransferHandler(new TransferHandler("icon"));
-        labelPanel.add(label);
-
     }
 
     public static void barSetup(JProgressBar bar, java.awt.Color back, java.awt.Color fore, int value, int minimun, int maximum, int x, int y, int width, int height, JPanel barPanel){

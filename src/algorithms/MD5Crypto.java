@@ -1,6 +1,5 @@
 package algorithms;
 
-// Mesma estrutura do SHA-256, só troca o algoritmo
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
@@ -15,11 +14,25 @@ public class MD5Crypto {
 
         byte[] buffer = new byte[4096];
         int bytesRead;
-        while ((bytesRead = in.read(buffer)) != -1) md.update(buffer, 0, bytesRead);
+        while ((bytesRead = in.read(buffer)) != -1) {
+            md.update(buffer, 0, bytesRead);
+        }
 
         byte[] digest = md.digest();
-        out.write(digest);
+        out.write(digest); // salva o hash binário
     }
 
-    // hashFromString e hashFromFile iguais ao SHA256Crypto
+    public static void hashFromString(String data, String outputFilePath, String salt, String password) throws Exception {
+        try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
+             FileOutputStream out = new FileOutputStream(outputFilePath)) {
+            hashInternal(in, out, salt, password);
+        }
+    }
+
+    public static void hashFromFile(String inputFilePath, String outputFilePath, String salt, String password) throws Exception {
+        try (FileInputStream in = new FileInputStream(inputFilePath);
+             FileOutputStream out = new FileOutputStream(outputFilePath)) {
+            hashInternal(in, out, salt, password);
+        }
+    }
 }
